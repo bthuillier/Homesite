@@ -70,3 +70,7 @@
 
 [twitter-bootstrap]
     git=http://github.com/twitter/bootstrap.git
+
+[FOSUserBundle]
+    git=git://github.com/FriendsOfSymfony/FOSUserBundle.git
+    target=bundles/FOS/UserBundle
