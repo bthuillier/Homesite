@@ -2,3 +2,7 @@
 #_internal:
 #   resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
 #   prefix:   /_internal
+test:
+  resource: "@BthuillierMainBundle/Controller/DefaultController.php"
+  prefix: /test
+  type: annotation
