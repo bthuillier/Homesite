@@ -67,3 +67,6 @@
 [DoctrineMongoDBBundle]
     git=http://github.com/symfony/DoctrineMongoDBBundle.git
     target=/bundles/Symfony/Bundle/DoctrineMongoDBBundle
+
+[twitter-bootstrap]
+    git=http://github.com/twitter/bootstrap.git
