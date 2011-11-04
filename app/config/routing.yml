@@ -3,6 +3,6 @@
 #   resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
 #   prefix:   /_internal
 test:
-  resource: "@BthuillierMainBundle/Controller/DefaultController.php"
+  resource: "@BthuillierMainBundle/Controller/MainController.php"
   prefix: /test
   type: annotation
