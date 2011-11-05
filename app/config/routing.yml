@@ -6,7 +6,11 @@ test:
   resource: "@BthuillierMainBundle/Controller/MainController.php"
   prefix: /test
   type: annotation
-  
+
+blog:
+  resource: "@BthuillierMainBundle/Controller/BlogController.php"
+  prefix: /blog
+  type: annotation  
   
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
