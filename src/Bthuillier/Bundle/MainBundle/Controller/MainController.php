@@ -1,7 +1,7 @@
 <?php
 namespace Bthuillier\Bundle\MainBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
@@ -10,7 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
  *
  * @author bthuillier
  */
-class MainController extends \Symfony\Component\DependencyInjection\ContainerAware {
+class MainController extends ContainerAware {
     /**
      * @Route("/")
      * @Template()

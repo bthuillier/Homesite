@@ -64,6 +64,8 @@ doctrine_mongodb:
     document_managers:
         default:
             auto_mapping: true
+            mappings:
+              StofDoctrineExtensionsBundle: false
 # Swiftmailer Configuration
 swiftmailer:
     transport: %mailer_transport%
@@ -79,3 +81,10 @@ fos_user:
     db_driver: mongodb # other valid values are 'mongodb', 'couchdb'
     firewall_name: main
     user_class: Bthuillier\Bundle\MainBundle\Document\User
+
+stof_doctrine_extensions:
+    default_locale: fr_FR
+    mongodb:
+        default:
+          timestampable:  true
+          sluggable:      true

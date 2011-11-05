@@ -9,7 +9,7 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 class CV {
     
     /**
-     * @MongoDB\Id
+     * @MongoDB\Id(strategy="auto")
      */
     protected $id;
   
