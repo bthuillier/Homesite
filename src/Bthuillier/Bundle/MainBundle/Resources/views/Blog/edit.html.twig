@@ -1,0 +1,10 @@
+{% extends "BthuillierMainBundle::layout.html.twig" %}
+{% block page_name %}Edit Blog{%endblock%}
+{% block content %}
+<form action="{{path('bthuillier_main_blog_edit', { 'slug': blog.slug })}}" method="post" {{ form_enctype(form) }}>
+    {{ form_errors(form) }}
+
+    {{ form_rest(form) }}
+
+    <input type="submit" />
+{% endblock %}
