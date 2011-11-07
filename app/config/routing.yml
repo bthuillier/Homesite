@@ -12,6 +12,11 @@ blog:
   prefix: /blog
   type: annotation  
   
+CV:
+  resource: "@BthuillierMainBundle/Controller/CVController.php"
+  prefix: /CV
+  type: annotation  
+  
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 
