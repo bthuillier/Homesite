@@ -43,4 +43,14 @@
       </footer>
 
     </div> <!-- /container -->
+
+{% javascripts
+    '@BthuillierMainBundle/Resources/public/js/jquery.js'
+    '@BthuillierMainBundle/Resources/public/js/*.js'
+%}
+<script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
+ <script type="text/javascript">
+$(window).load(accordion.CV.bind);
+    </script>
 {% endblock %}
