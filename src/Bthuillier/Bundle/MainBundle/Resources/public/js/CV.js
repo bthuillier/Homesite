@@ -22,11 +22,11 @@ accordion.CV = {
         titles.each(function (i, e) {
             var element = $(e);
             element.html('<span class="more">+</span> ' + $(e).html());
-            element.next().hide();
+            element.nextUntil('dt').hide();
         });
         titles.click(function () {
             var title = $(this);
-            var definition = title.next();
+            var definition = title.nextUntil('dt');
 
             if (current) {
                 current.slideUp();
