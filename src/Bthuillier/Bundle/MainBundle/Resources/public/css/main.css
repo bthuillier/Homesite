@@ -80,3 +80,7 @@ border: 0;
 .pull-right .nav{
     margin-right: 0px;
 }
+
+article + article {
+margin-top: 40px;
+}
