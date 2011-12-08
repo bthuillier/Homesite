@@ -16,10 +16,18 @@
         <div class="container">
           <a class="brand" href="#">Benjamin Thuillier</a>
           <ul class="nav">
-            <li {% block blogMenu %}{% endblock %}><a href="#">Blog</a></li>
-            <li {% block cvMenu %}{% endblock %}><a href="#about">CV</a></li>
+            <li {% block blogMenu %}{% endblock %}><a href="{{ path('bthuillier_main_blog_index')}}">Blog</a></li>
+            <li {% block cvMenu %}{% endblock %}><a href="{{path('bthuillier_main_cv_index')}}">CV</a></li>
             <li {% block contactMenu %}{% endblock %}><a href="#contact">Contact</a></li>
           </ul>
+          <span class="pull-right">
+          <ul class="nav">
+            <li><a class="social-link" href="{{ path('bthuillier_main_blog_index')}}"><img src="{{ asset('bundles/bthuilliermain/images/social/linkedin.png') }}" alt="Symfony!" /></a></li>
+            <li><a class="social-link" href="{{ path('bthuillier_main_blog_index')}}"><img src="{{ asset('bundles/bthuilliermain/images/social/twitter.png') }}" alt="Symfony!" /></a></li>          
+            <li><a class="social-link" href="{{ path('bthuillier_main_blog_index')}}"><img src="{{ asset('bundles/bthuilliermain/images/social/facebook.png') }}" alt="Symfony!" /></a></li>
+            <li><a class="social-link" href="{{ path('bthuillier_main_blog_index')}}"><img src="{{ asset('bundles/bthuilliermain/images/social/icone-viadeo.png') }}" alt="Symfony!" /></a></li>
+          </ul>
+        </span>
         </div>
       </div>
     </div>

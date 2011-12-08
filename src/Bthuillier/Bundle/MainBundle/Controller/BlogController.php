@@ -21,7 +21,10 @@ class BlogController extends ContainerAware {
      * @Template()
      */
     public function indexAction() {
-        return array();
+        $dm = $this->container->get('doctrine.odm.mongodb.document_manager');
+        $blogs = $dm->getRepository('BthuillierMainBundle:Blog')->findAll();
+
+        return array("blogs" => $blogs);
     }
 
     /**
