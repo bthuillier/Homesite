@@ -1,5 +1,14 @@
 {% extends "BthuillierMainBundle:Blog:layout.html.twig" %}
 {% block page_name %}Blog posts{%endblock%}
 {% block content %}
+    {% for blog in blogs %}
+        <article>
+        <div class="page-header">
+            <h2>Symfony c'est la vie <small>Posted on October 24, 2011 by Benjamin Thuillier</small></h2>
+        </div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eget tortor odio, at fringilla lorem. Aenean blandit nisl quis elit lobortis dictum. Donec ut arcu leo. Praesent leo arcu, vestibulum quis dapibus sit amet, gravida eget est. Pellentesque et risus sit amet nisi blandit facilisis sed at elit. Integer non augue nisi. Ut ac elementum urna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sit amet eros risus, sed pellentesque libero. Vivamus sollicitudin iaculis pulvinar. Aliquam erat volutpat. Morbi augue elit, pretium nec mattis vitae, congue non urna. Morbi ultrices pharetra vestibulum.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eget tortor odio, at fringilla lorem. Aenean blandit nisl quis elit lobortis dictum. Donec ut arcu leo. Praesent leo arcu, vestibulum quis dapibus sit amet, gravida eget est. Pellentesque et risus sit amet nisi blandit facilisis sed at elit. Integer non augue nisi. Ut ac elementum urna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sit amet eros risus, sed pellentesque libero. Vivamus sollicitudin iaculis pulvinar. Aliquam erat volutpat. Morbi augue elit, pretium nec mattis vitae, congue non urna. Morbi ultrices pharetra vestibulum.</p>
+        </article>
+    {% endfor %}
 
 {% endblock %}
