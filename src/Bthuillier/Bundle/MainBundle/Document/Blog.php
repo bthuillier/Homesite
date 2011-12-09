@@ -45,7 +45,11 @@ class Blog {
      * @MongoDB\Boolean
      */
     protected $isActive;
- 
+
+    /**
+     * @MongoDB\ReferenceOne(targetDocument="User")
+     */
+    private $author;    
 
     /**
      * Get id
@@ -155,5 +159,25 @@ class Blog {
     public function getIsActive()
     {
         return $this->isActive;
+    }
+
+    /**
+     * Set author
+     *
+     * @param Bthuillier\Bundle\MainBundle\Document\User $author
+     */
+    public function setAuthor(\Bthuillier\Bundle\MainBundle\Document\User $author)
+    {
+        $this->author = $author;
+    }
+
+    /**
+     * Get author
+     *
+     * @return Bthuillier\Bundle\MainBundle\Document\User $author
+     */
+    public function getAuthor()
+    {
+        return $this->author;
     }
 }

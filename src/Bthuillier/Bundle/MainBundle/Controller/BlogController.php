@@ -23,8 +23,9 @@ class BlogController extends ContainerAware {
     public function indexAction() {
         $dm = $this->container->get('doctrine.odm.mongodb.document_manager');
         $blogs = $dm->getRepository('BthuillierMainBundle:Blog')->findAll();
-
-        return array("blogs" => $blogs, "author" => "Benjamin Thuillier");
+        $author = $dm->getRepository('BthuillierMainBundle:User')->findOneByFullname("Benjamin Thuillier");
+        
+        return array("blogs" => $blogs, "author" => $author);
     }
 
     /**
@@ -91,7 +92,9 @@ class BlogController extends ContainerAware {
             $form->bindRequest($request);
             if ($form->isValid()) {
                 $dm = $this->container->get('doctrine.odm.mongodb.document_manager');
+                $blog->setAuthor($this->container->get('security.context')->getToken()->getUser());
                 $dm->persist($blog);
+                
                 $dm->flush();
                 $url = $this->container->get('router')->generate('bthuillier_main_blog_list');
                 return new RedirectResponse($url);
