@@ -24,7 +24,7 @@ class BlogController extends ContainerAware {
         $dm = $this->container->get('doctrine.odm.mongodb.document_manager');
         $blogs = $dm->getRepository('BthuillierMainBundle:Blog')->findAll();
 
-        return array("blogs" => $blogs);
+        return array("blogs" => $blogs, "author" => "Benjamin Thuillier");
     }
 
     /**
