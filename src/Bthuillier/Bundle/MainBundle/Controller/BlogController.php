@@ -16,6 +16,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
  */
 class BlogController extends ContainerAware {
 
+    
     /**
      * @Route("/")
      * @Template()
@@ -23,11 +24,11 @@ class BlogController extends ContainerAware {
     public function indexAction() {
         $dm = $this->container->get('doctrine.odm.mongodb.document_manager');
         $blogs = $dm->getRepository('BthuillierMainBundle:Blog')->findAll();
-        $author = $dm->getRepository('BthuillierMainBundle:User')->findOneByFullname("Benjamin Thuillier");
         
-        return array("blogs" => $blogs, "author" => $author);
+        return array("blogs" => $blogs);
     }
-
+    
+    
     /**
      * @Route("/new")
      * @Template()
