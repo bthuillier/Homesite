@@ -61,7 +61,7 @@ class BlogController extends BaseController {
      * @Secure(roles="ROLE_ADMIN")
      */
     public function listAction() {
-        $blogs = $dm->getDoctrine()->getRepository('BthuillierMainBundle:Blog')
+        $blogs = $this->getRepository('BthuillierMainBundle:Blog')
                 ->findAll();
 
         return array("blogs" => $blogs);

@@ -1,4 +1,4 @@
-{% extends "BthuillierMainBundle::layout.html.twig" %}
+{% extends "BthuillierMainBundle:Blog:layout.html.twig" %}
 {% block page_name %}Edit Blog{%endblock%}
 {% block content %}
 <form action="{{path('bthuillier_main_blog_edit', { 'slug': blog.slug })}}" method="post" {{ form_enctype(form) }}>
