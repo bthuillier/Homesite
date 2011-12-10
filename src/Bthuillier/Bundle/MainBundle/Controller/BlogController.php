@@ -4,7 +4,6 @@ namespace Bthuillier\Bundle\MainBundle\Controller;
 
 use Bthuillier\Bundle\MainBundle\Document\Blog;
 use Bthuillier\Bundle\MainBundle\Form\Type\BlogType;
-use Symfony\Component\DependencyInjection\ContainerAware;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -16,7 +15,7 @@ use JMS\SecurityExtraBundle\Annotation\Secure;
  *
  * @author bthuillier
  */
-class BlogController extends ContainerAware {
+class BlogController extends BaseController {
 
     
     /**
@@ -24,8 +23,8 @@ class BlogController extends ContainerAware {
      * @Template()
      */
     public function indexAction() {
-        $dm = $this->container->get('doctrine.odm.mongodb.document_manager');
-        $blogs = $dm->getRepository('BthuillierMainBundle:Blog')->findBy(array(), array("publishedAt" => "desc"), 5);
+        $blogs = $this->getRepository('BthuillierMainBundle:Blog')
+                ->findBy(array(), array("publishedAt" => "desc"), 5);
         
         return array("blogs" => $blogs);
     }
@@ -46,7 +45,7 @@ class BlogController extends ContainerAware {
         if ($request->getMethod() == 'POST') {
             $form->bindRequest($request);
             if ($form->isValid()) {
-                $dm = $this->container->get('doctrine.odm.mongodb.document_manager');
+                $dm = $this->getManager();
                 $dm->persist($blog);
                 $dm->flush();
                 $url = $this->container->get('router')->generate('bthuillier_main_blog_list');
@@ -62,8 +61,8 @@ class BlogController extends ContainerAware {
      * @Secure(roles="ROLE_ADMIN")
      */
     public function listAction() {
-        $dm = $this->container->get('doctrine.odm.mongodb.document_manager');
-        $blogs = $dm->getRepository('BthuillierMainBundle:Blog')->findAll();
+        $blogs = $dm->getDoctrine()->getRepository('BthuillierMainBundle:Blog')
+                ->findAll();
 
         return array("blogs" => $blogs);
     }
@@ -74,11 +73,13 @@ class BlogController extends ContainerAware {
      * @Secure(roles="ROLE_ADMIN")
      */
     public function deleteAction($slug) {
-        $dm = $this->container->get('doctrine.odm.mongodb.document_manager');
-        $blog = $dm->getRepository('BthuillierMainBundle:Blog')->findOneBy(array('slug' => $slug));
+        $dm = $this->getManager();
+        $blog = $this->getRepository('BthuillierMainBundle:Blog')
+                ->findOneBy(array('slug' => $slug));
         $dm->remove($blog);
         $dm->flush();
-        $url = $this->container->get('router')->generate('bthuillier_main_blog_list');
+        $url = $this->container->get('router')
+                ->generate('bthuillier_main_blog_list');
         return new RedirectResponse($url);
     }
 
@@ -89,16 +90,18 @@ class BlogController extends ContainerAware {
      */
     public function editAction($slug) {
         
-        $dm = $this->container->get('doctrine.odm.mongodb.document_manager');
-        $blog = $dm->getRepository('BthuillierMainBundle:Blog')->findOneBy(array('slug' => $slug));
+        $dm = $this->getManager();
+        $blog = $this->getRepository('BthuillierMainBundle:Blog')
+                ->findOneBy(array('slug' => $slug));
+        
         $factory = $this->container->get('form.factory');
         $form = $factory->create(new BlogType());
         $form->setData($blog);
         $request = $this->container->get('request');
+        
         if ($request->getMethod() == 'POST') {
             $form->bindRequest($request);
             if ($form->isValid()) {
-                $dm = $this->container->get('doctrine.odm.mongodb.document_manager');
                 $dm->persist($blog);
                 $dm->flush();
                 $url = $this->container->get('router')->generate('bthuillier_main_blog_list');

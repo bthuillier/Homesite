@@ -1,6 +1,6 @@
 <?php
 
-namespace CVController;namespace Bthuillier\Bundle\MainBundle\Controller;
+namespace Bthuillier\Bundle\MainBundle\Controller;
 
 use Symfony\Component\DependencyInjection\ContainerAware;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
