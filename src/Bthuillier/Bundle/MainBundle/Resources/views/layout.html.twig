@@ -1,7 +1,7 @@
 {% extends "::base.html.twig" %}
 
 {% block stylesheets %}
-{% stylesheets 
+{% stylesheets filter="?yui_css" output="css/all.css"
     "@BthuillierMainBundle/Resources/public/less/twitter-bootstrap/bootstrap.less"
     "@BthuillierMainBundle/Resources/public/css/main.css"
 %}
@@ -52,7 +52,7 @@
 
     </div> <!-- /container -->
 
-{% javascripts
+{% javascripts filter="?yui_js"
     '@BthuillierMainBundle/Resources/public/js/jquery.js'
     '@BthuillierMainBundle/Resources/public/js/*.js'
 %}

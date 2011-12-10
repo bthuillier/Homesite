@@ -27,9 +27,9 @@ twig:
 # Assetic Configuration
 assetic:
     debug:          %kernel.debug%
-    use_controller: false
+    use_controller: true
     bundles:        [BthuillierMainBundle]
-    # java: /usr/bin/java
+    java: /usr/bin/java
     filters:
         cssrewrite: ~
         less:
@@ -38,8 +38,10 @@ assetic:
             apply_to: "\.less$"
         # closure:
         #     jar: %kernel.root_dir%/java/compiler.jar
-        # yui_css:
-        #     jar: %kernel.root_dir%/java/yuicompressor-2.4.2.jar
+        yui_css:
+             jar: %kernel.root_dir%/java/yuicompressor-2.4.7.jar
+        yui_js:
+             jar: %kernel.root_dir%/java/yuicompressor-2.4.7.jar
 
 
 doctrine_mongodb:
