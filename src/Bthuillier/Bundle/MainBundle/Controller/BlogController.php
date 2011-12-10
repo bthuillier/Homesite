@@ -8,6 +8,8 @@ use Symfony\Component\DependencyInjection\ContainerAware;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use JMS\SecurityExtraBundle\Annotation\Secure;
 
 /**
  * Description of BlogController
@@ -23,7 +25,7 @@ class BlogController extends ContainerAware {
      */
     public function indexAction() {
         $dm = $this->container->get('doctrine.odm.mongodb.document_manager');
-        $blogs = $dm->getRepository('BthuillierMainBundle:Blog')->findAll();
+        $blogs = $dm->getRepository('BthuillierMainBundle:Blog')->findBy(array(), array("publishedAt" => "desc"), 5);
         
         return array("blogs" => $blogs);
     }
@@ -32,6 +34,7 @@ class BlogController extends ContainerAware {
     /**
      * @Route("/new")
      * @Template()
+     * @Secure(roles="ROLE_ADMIN")
      */
     public function newAction() {
         $factory = $this->container->get('form.factory');
@@ -56,6 +59,7 @@ class BlogController extends ContainerAware {
     /**
      * @Route("/list")
      * @Template()
+     * @Secure(roles="ROLE_ADMIN")
      */
     public function listAction() {
         $dm = $this->container->get('doctrine.odm.mongodb.document_manager');
@@ -67,6 +71,7 @@ class BlogController extends ContainerAware {
     /**
      * @Route("/{slug}/delete")
      * @Template()
+     * @Secure(roles="ROLE_ADMIN")
      */
     public function deleteAction($slug) {
         $dm = $this->container->get('doctrine.odm.mongodb.document_manager');
@@ -80,6 +85,7 @@ class BlogController extends ContainerAware {
     /**
      * @Route("/{slug}/edit")
      * @Template
+     * @Secure(roles="ROLE_ADMIN")
      */
     public function editAction($slug) {
         
@@ -93,9 +99,7 @@ class BlogController extends ContainerAware {
             $form->bindRequest($request);
             if ($form->isValid()) {
                 $dm = $this->container->get('doctrine.odm.mongodb.document_manager');
-                $blog->setAuthor($this->container->get('security.context')->getToken()->getUser());
                 $dm->persist($blog);
-                
                 $dm->flush();
                 $url = $this->container->get('router')->generate('bthuillier_main_blog_list');
                 return new RedirectResponse($url);
