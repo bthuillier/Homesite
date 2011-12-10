@@ -4,7 +4,7 @@
     {% for blog in blogs %}
         <article>
         <div class="page-header">
-            <h2>{{blog.title }} <small>Posted on {{ blog.publishedAt|date("F d, Y") }} by {{blog.author.fullname}}</small></h2>
+            <h2><a href="{{path('bthuillier_main_blog_show', { 'slug': blog.slug })}}">{{blog.title }}</a> <small>Posted on {{ blog.publishedAt|date("F d, Y") }} by {{blog.author.fullname}}</small></h2>
         </div>
         {{ blog.body | raw }}
         </article>

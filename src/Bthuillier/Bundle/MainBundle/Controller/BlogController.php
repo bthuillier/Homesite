@@ -84,6 +84,16 @@ class BlogController extends BaseController {
     }
 
     /**
+     * @Route("/show/{slug}")
+     * @Template()
+     */
+    public function showAction($slug) {
+        $blog = $this->getRepository('BthuillierMainBundle:Blog')
+                ->findOneBy(array('slug' => $slug));
+        return array("blog" => $blog);
+    }
+    
+    /**
      * @Route("/{slug}/edit")
      * @Template
      * @Secure(roles="ROLE_ADMIN")

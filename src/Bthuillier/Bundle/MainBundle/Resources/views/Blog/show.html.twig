@@ -1,0 +1,8 @@
+{% extends "BthuillierMainBundle::layout.html.twig" %}
+{% block page_name %}{{blog.title }} <small>Posted on {{ blog.publishedAt|date("F d, Y") }} by {{blog.author.fullname}}</small>{%endblock%}
+{% block content %}
+        <article>
+        {{ blog.body | raw }}
+        </article>
+
+{% endblock %}
