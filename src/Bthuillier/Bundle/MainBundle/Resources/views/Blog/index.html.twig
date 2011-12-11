@@ -1,4 +1,7 @@
 {% extends "BthuillierMainBundle:Blog:layout.html.twig" %}
+{%block title %}
+{{ parent() }}Blog
+{% endblock %}
 {% block page_name %}Blog posts{%endblock%}
 {% block content %}
     {% for blog in blogs %}

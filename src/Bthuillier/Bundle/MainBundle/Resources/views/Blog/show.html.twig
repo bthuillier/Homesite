@@ -1,4 +1,7 @@
 {% extends "BthuillierMainBundle:Blog:layout.html.twig" %}
+{%block title %}
+{{ parent() }}{{blog.title}}
+{% endblock %}
 {% block page_name %}
     {{blog.title }} <small>Posted on {{ blog.publishedAt|date("F d, Y") }} by {{blog.author.fullname}}</small>
     {% if is_granted('ROLE_ADMIN') %}
@@ -10,5 +13,23 @@
         <article>
         {{ blog.body | raw }}
         </article>
-
+<div class="row">
+<div id="disqus_thread" class="span14"></div>
+</div>
 {% endblock %}
+    {% block disqus %}
+<script type="text/javascript">
+    var disqus_shortname = 'bthuillier'; // required: replace example with your forum shortname
+    {% if app.environment == "dev" %}
+    var disqus_developer = 1;
+    {% endif %}
+    var disqus_identifier = '{{ blog.id}}';
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    {% endblock %}
