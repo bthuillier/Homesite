@@ -79,3 +79,7 @@ border: 0;
 article + article {
 margin-top: 40px;
 }
+
+#disqus_thread h3, #dsq-global-toolbar, #dsq-sort-by, #dsq-pagination {
+display: none;
+}

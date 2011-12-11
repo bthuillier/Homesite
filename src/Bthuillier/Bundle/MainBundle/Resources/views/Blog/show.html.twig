@@ -14,10 +14,18 @@
         {{ blog.body | raw }}
         </article>
 <div class="row">
+<div class="span3">
+        <a href="https://twitter.com/share" class="twitter-share-button" data-via="b_thuillier" data-lang="fr">Tweet</a>
+</div>
+</div>
+<div class="row">
+    <div class="span14"><h3>Commenter</h3></div>
+</div>
+<div class="row">
 <div id="disqus_thread" class="span14"></div>
 </div>
 {% endblock %}
-    {% block disqus %}
+    {% block social %}
 <script type="text/javascript">
     var disqus_shortname = 'bthuillier'; // required: replace example with your forum shortname
     {% if app.environment == "dev" %}
@@ -30,6 +38,7 @@
         dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>    
     {% endblock %}
