@@ -1,6 +1,6 @@
 /* Override some defaults */
 html, body {
-background-color: #eee;
+    background-color: #c6e1ff;
 }
 body {
 padding-top: 40px; /* 40px to make the container go all the way to the bottom of the topbar */

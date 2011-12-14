@@ -20,4 +20,20 @@ class MainController extends ContainerAware {
     {
         return array();
     }
+    
+    /**
+     * @Route("/CV")
+     * @Template()
+     */
+    public function CVAction() {
+        return array();
+    }
+    
+    /**
+     * @Route("/contact")
+     * @Template()
+     */
+    public function contactAction() {
+        return array();
+    }    
 }

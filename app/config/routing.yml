@@ -2,9 +2,9 @@
 #_internal:
 #   resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
 #   prefix:   /_internal
-test:
+main:
   resource: "@BthuillierMainBundle/Controller/MainController.php"
-  prefix: /test
+  prefix: /
   type: annotation
 
 blog:
@@ -15,11 +15,6 @@ blog:
 user:
   resource: "@BthuillierMainBundle/Controller/UserController.php"
   prefix: /user
-  type: annotation  
-  
-CV:
-  resource: "@BthuillierMainBundle/Controller/CVController.php"
-  prefix: /CV
   type: annotation  
   
 fos_user_security:
