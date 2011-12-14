@@ -2,8 +2,7 @@
 
 {% block stylesheets %}
 {% stylesheets filter="?yui_css" output="css/all.css"
-    "@BthuillierMainBundle/Resources/public/less/twitter-bootstrap/bootstrap.less"
-    "@BthuillierMainBundle/Resources/public/css/main.css"
+    "@BthuillierMainBundle/Resources/public/less/main.less"
 %}
     <link href="{{ asset_url }}" rel="stylesheet" />
 {% endstylesheets %}
@@ -19,6 +18,9 @@
             <li {% block blogMenu %}{% endblock %}><a href="{{ path('bthuillier_main_blog_index')}}">Blog</a></li>
             <li {% block cvMenu %}{% endblock %}><a href="{{path('bthuillier_main_cv_index')}}">CV</a></li>
             <li {% block contactMenu %}{% endblock %}><a href="#contact">Contact</a></li>
+            {% if is_granted('ROLE_ADMIN') %}
+            <li {% block profilMenu %}{%endblock %}><a href="#profil">Mon Profile</a></li>
+            {% endif %}
           </ul>
           <span class="pull-right">
           <ul class="nav">
