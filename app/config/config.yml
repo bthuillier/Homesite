@@ -70,8 +70,7 @@ jms_security_extra:
 fos_user:
     db_driver: mongodb # other valid values are 'mongodb', 'couchdb'
     firewall_name: main
-    user_class: Bthuillier\Bundle\MainBundle\Document\User
-    
+    user_class: Bthuillier\Bundle\MainBundle\Document\User 
 
 stof_doctrine_extensions:
     default_locale: fr_FR

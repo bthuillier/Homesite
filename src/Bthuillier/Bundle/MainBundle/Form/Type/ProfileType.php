@@ -14,7 +14,7 @@ class ProfileType extends BaseType{
     {
         parent::buildForm($builder, $options);
         // add your custom field
-        $builder->add('firstname');
+        $builder->add('fullname');
     }
 
     public function getName()

@@ -19,7 +19,7 @@
             <li {% block cvMenu %}{% endblock %}><a href="{{path('bthuillier_main_cv_index')}}">CV</a></li>
             <li {% block contactMenu %}{% endblock %}><a href="#contact">Contact</a></li>
             {% if is_granted('ROLE_ADMIN') %}
-            <li {% block profilMenu %}{%endblock %}><a href="#profil">Mon Profile</a></li>
+            <li {% block profilMenu %}{%endblock %}><a href="{{path('bthuillier_main_user_index')}}">Mon Profile</a></li>
             {% endif %}
           </ul>
           <span class="pull-right">

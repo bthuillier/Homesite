@@ -11,6 +11,11 @@ blog:
   resource: "@BthuillierMainBundle/Controller/BlogController.php"
   prefix: /blog
   type: annotation  
+
+user:
+  resource: "@BthuillierMainBundle/Controller/UserController.php"
+  prefix: /user
+  type: annotation  
   
 CV:
   resource: "@BthuillierMainBundle/Controller/CVController.php"
