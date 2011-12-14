@@ -3,5 +3,22 @@
 {% block contactMenu %}class="active"{% endblock %}
 {% block page_name %}Contactez Moi{%endblock%}
 {% block content %}
+<div class="row">
+    <div class="span11">
+    <form action="{{path('bthuillier_main_main_contact')}}" method="post" {{ form_enctype(form) }}>
+    {{ form_errors(form) }}
 
+    {{ form_rest(form) }}
+
+    <input type="submit" />   
+    </div>
+ 
+    <div class="span3">
+    <address>
+    <strong>Benjamin Thuillier</strong><br>
+    <a mailto>benjaminthuillier@gmail.com</a><br>
+    0698574419
+    </address>
+    </div>
+</div>
 {% endblock %}
