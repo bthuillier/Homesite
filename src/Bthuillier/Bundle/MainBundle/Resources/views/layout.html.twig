@@ -1,5 +1,5 @@
 {% extends "::base.html.twig" %}
-
+{% block title %}{{ parent()}}Welcome{% endblock %}
 {% block stylesheets %}
 {% stylesheets filter="?yui_css" output="css/all.css"
     "@BthuillierMainBundle/Resources/public/less/main.less"
@@ -13,7 +13,7 @@
     <div class="topbar">
       <div class="fill">
         <div class="container">
-          <a class="brand" href="#">Benjamin Thuillier</a>
+          <a class="brand" href="{{ path('bthuillier_main_main_index')}}">Benjamin Thuillier</a>
           <ul class="nav">
             <li {% block blogMenu %}{% endblock %}><a href="{{ path('bthuillier_main_blog_index')}}">Blog</a></li>
             <li {% block cvMenu %}{% endblock %}><a href="{{path('bthuillier_main_main_cv')}}">CV</a></li>
@@ -61,7 +61,7 @@
 <script type="text/javascript" src="{{ asset_url }}"></script>
 {% endjavascripts %}
 <script type="text/javascript">
-$(window).ready(accordion.CV.bind);
+//$(window).ready(accordion.CV.bind);
 {% if app.environment != "dev" %}    
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-27720114-1']);
