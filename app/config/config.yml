@@ -27,7 +27,7 @@ twig:
 # Assetic Configuration
 assetic:
     debug:          %kernel.debug%
-    use_controller: true
+    use_controller: false
     bundles:        [BthuillierMainBundle]
     java: /usr/bin/java
     filters:
