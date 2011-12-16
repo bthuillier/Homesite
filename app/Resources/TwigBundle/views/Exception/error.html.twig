@@ -1,0 +1,6 @@
+{% extends "BthuillierMainBundle::layout.html.twig" %}
+{% block title %}An Error Occurred: {{ status_text }}{% endblock %}
+{% block page_name %}What are you doing here ?{%endblock%}
+{%block content %}
+I Think we have a {{ status_code }} Problem, the message is {{ status_text }}
+{% endblock %}
