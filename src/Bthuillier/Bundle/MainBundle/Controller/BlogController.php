@@ -16,15 +16,22 @@ use JMS\SecurityExtraBundle\Annotation\Secure;
  * @author bthuillier
  */
 class BlogController extends BaseController {
-
+    
+    /**
+     * @return \Bthuillier\Bundle\MainBundle\Manager\BlogManager
+     */
+    protected function getManager() {
+        return $this->get("bthuillier.blog_manager");
+    }
+    
     
     /**
      * @Route("/")
      * @Template()
      */
     public function indexAction() {
-        $blogs = $this->getRepository('BthuillierMainBundle:Blog')
-                ->findBy(array(), array("publishedAt" => "desc"), 5);
+        $blogs = $this->getManager()->getRepository()
+                ->findBy(array("isActive"=> true), array("publishedAt" => "desc"), 5);
         
         return array("blogs" => $blogs);
     }
@@ -45,9 +52,7 @@ class BlogController extends BaseController {
         if ($request->getMethod() == 'POST') {
             $form->bindRequest($request);
             if ($form->isValid()) {
-                $dm = $this->getManager();
-                $dm->persist($blog);
-                $dm->flush();
+                $this->getManager()->save($blog);
                 $url = $this->container->get('router')->generate('bthuillier_main_blog_list');
                 return new RedirectResponse($url);
             }
@@ -73,11 +78,8 @@ class BlogController extends BaseController {
      * @Secure(roles="ROLE_ADMIN")
      */
     public function deleteAction($slug) {
-        $dm = $this->getManager();
-        $blog = $this->getRepository('BthuillierMainBundle:Blog')
-                ->findOneBy(array('slug' => $slug));
-        $dm->remove($blog);
-        $dm->flush();
+        $blog = $this->getManager()->getBlog($slug);
+        $this->getManager()->delete($blog);
         $url = $this->container->get('router')
                 ->generate('bthuillier_main_blog_list');
         return new RedirectResponse($url);
@@ -88,8 +90,7 @@ class BlogController extends BaseController {
      * @Template()
      */
     public function showAction($slug) {
-        $blog = $this->getRepository('BthuillierMainBundle:Blog')
-                ->findOneBy(array('slug' => $slug));
+        $blog = $this->getManager()->getBlog($slug);
         return array("blog" => $blog);
     }
     
@@ -100,9 +101,7 @@ class BlogController extends BaseController {
      */
     public function editAction($slug) {
         
-        $dm = $this->getManager();
-        $blog = $this->getRepository('BthuillierMainBundle:Blog')
-                ->findOneBy(array('slug' => $slug));
+        $blog = $this->getManager()->getBlog($slug);
         
         $factory = $this->container->get('form.factory');
         $form = $factory->create(new BlogType());
@@ -112,8 +111,7 @@ class BlogController extends BaseController {
         if ($request->getMethod() == 'POST') {
             $form->bindRequest($request);
             if ($form->isValid()) {
-                $dm->persist($blog);
-                $dm->flush();
+                $this->getManager()->save($blog);
                 $url = $this->container->get('router')->generate('bthuillier_main_blog_list');
                 return new RedirectResponse($url);
             }
