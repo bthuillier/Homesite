@@ -2,7 +2,12 @@
 {%block title %}
 {{ parent() }}Blog
 {% endblock %}
-{% block page_name %}Blog posts{%endblock%}
+{% block page_name %}
+    Blog posts
+    {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{path('bthuillier_main_blog_new')}}" class="btn success pull-right">Nouveau</a>
+    {% endif %}
+{%endblock%}
 {% block content %}
     {% for blog in blogs %}
         <article>
