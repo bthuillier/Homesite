@@ -8,7 +8,7 @@
         <parameter key="bthuillier_main.blog.form_handler.class">Bthuillier\Bundle\MainBundle\Form\Handler\BlogFormHandler</parameter>
     </parameters>
     <services>
-        <service id="bthuillier_main.blog.form_handler" scope="request">
+        <service id="bthuillier_main.blog.form_handler" class="%bthuillier_main.blog.form_handler.class%" scope="request">
             <argument type="service" id="bthuillier_main.blog.form" />
             <argument type="service" id="request" />
             <argument type="service" id="bthuillier_main.blog_manager" />
@@ -22,7 +22,12 @@
         </service>
         <service id="bthuillier_main.blog.form.type" class="Bthuillier\Bundle\MainBundle\Form\Type\BlogType">
             <tag name="form.type" alias="bthuillier_main_blog" />
-        </service>        
+        </service>
+        
+          <service id="bthuillier_main.blog.listener" class="Bthuillier\Bundle\MainBundle\Document\Listener\BlogListener">
+            <tag name="doctrine.common.event_subscriber" event="postSave" />
+            <argument type="service" id="service_container" />
+        </service>     
     </services>
 
 </container>
