@@ -3,8 +3,8 @@
 
 [twig]
     git=http://github.com/fabpot/Twig.git
-    version=origin/master
-
+    version=v1.4.0
+   
 [monolog]
     git=http://github.com/Seldaek/monolog.git
     version=1.0.2
