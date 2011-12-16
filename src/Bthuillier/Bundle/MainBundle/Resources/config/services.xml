@@ -3,14 +3,13 @@
 <container xmlns="http://symfony.com/schema/dic/services"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
-
+    <parameters>
+        <parameter key="bthuillier.blog_manager.class">Bthuillier\Bundle\MainBundle\Manager\BlogManager</parameter>         
+    </parameters>
     <services>
-
-        <service id="acme_user.profile.form.type" class="Bthuillier\Bundle\MainBundle\Form\Type\ProfileType">
-            <tag name="form.type" alias="main_user_profile" />
-            <argument>%fos_user.model.user.class%</argument>
+        <service id="bthuillier.blog_manager" class="%bthuillier.blog_manager.class%">
+            <argument type="service" id="doctrine.odm.mongodb.document_manager" />
         </service>
-
     </services>
 
 </container>
