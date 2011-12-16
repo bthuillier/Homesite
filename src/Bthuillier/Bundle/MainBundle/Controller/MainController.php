@@ -13,7 +13,7 @@ use Bthuillier\Bundle\MainBundle\Contact\Contact;
  *
  * @author bthuillier
  */
-class MainController extends ContainerAware {
+class MainController extends BaseController {
     /**
      * @Route("/")
      * @Template()

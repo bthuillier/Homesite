@@ -24,14 +24,19 @@ class BlogController extends BaseController {
         return $this->get("bthuillier.blog_manager");
     }
     
+    public function recentBlogsAction() {
+        $blogs = $this->getManager()->getRepository()->lastBlogs();
+        return $this->get('templating')
+                ->renderResponse("BthuillierMainBundle:Blog:recentBlogs.html.twig", 
+                        array("blogs" => $blogs));
+    }
     
     /**
      * @Route("/")
      * @Template()
      */
     public function indexAction() {
-        $blogs = $this->getManager()->getRepository()
-                ->findBy(array("isActive"=> true), array("publishedAt" => "desc"), 5);
+        $blogs = $this->getManager()->getRepository()->lastBlogs();
         
         return array("blogs" => $blogs);
     }

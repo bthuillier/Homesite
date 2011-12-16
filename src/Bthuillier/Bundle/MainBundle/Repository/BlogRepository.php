@@ -12,4 +12,7 @@ use Doctrine\ODM\MongoDB\DocumentRepository;
  */
 class BlogRepository extends DocumentRepository
 {
+    public function lastBlogs($number = 5) {
+        return $this->findBy(array("isActive"=> true), array("publishedAt" => "desc"), $number);
+    }
 }

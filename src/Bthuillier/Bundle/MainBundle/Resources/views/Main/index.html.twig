@@ -1,5 +1,23 @@
 {% extends "BthuillierMainBundle::layout.html.twig" %}
-{% block page_name %}Qui suis-je ?{%endblock%}
+{% block page_name %}Bienvenue{%endblock%}
 {% block content %}
-test
+<div class="row">
+    <div class="span16">
+        
+    </div>
+</div>
+<div class="row">
+    <div class="span8">
+        <h2 class="title-index">
+            Les derniers articles
+        </h2>
+        {% render "BthuillierMainBundle:Blog:recentBlogs"%}
+    </div>
+    <div class="span8">
+        <h2 class="title-index">
+            In Progress
+        </h2>
+        dsqfs ezg fdg zdfg ezrh sdf gsdffrsfsdreqsdfsf        
+    </div>
+</div>
 {% endblock %}
