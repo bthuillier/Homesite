@@ -49,21 +49,14 @@ class BlogController extends BaseController {
      */
     public function newAction() {
         
-        $form = $this->get("bthuillier_main.blog.form");
-
         $blog = new Blog();
-        $form->setData($blog);
-        $request = $this->container->get('request');
-        if ($request->getMethod() == 'POST') {
-            $form->bindRequest($request);
-            if ($form->isValid()) {
-                $blog->setAuthor($this->get("security.context")->getToken()->getUser());
-                $this->getManager()->save($blog);
-                $url = $this->container->get('router')->generate('bthuillier_main_blog_list');
-                return new RedirectResponse($url);
-            }
+        $handler = $this->get("bthuillier_main.blog.form_handler");
+        
+        if($handler->process($blog)) {
+           $url = $this->container->get('router')->generate('bthuillier_main_blog_list');
+           return new RedirectResponse($url); 
         }
-        return array("form" => $form->createView());
+        return array("form" => $handler->getFormView());
     }
 
     /**
@@ -108,21 +101,13 @@ class BlogController extends BaseController {
     public function editAction($slug) {
         
         $blog = $this->getManager()->getBlog($slug);
+        $handler = $this->get("bthuillier_main.blog.form_handler");
         
-        $factory = $this->container->get('form.factory');
-        $form = $factory->create(new BlogType());
-        $form->setData($blog);
-        $request = $this->container->get('request');
-        
-        if ($request->getMethod() == 'POST') {
-            $form->bindRequest($request);
-            if ($form->isValid()) {
-                $this->getManager()->save($blog);
-                $url = $this->container->get('router')->generate('bthuillier_main_blog_list');
-                return new RedirectResponse($url);
-            }
+        if($handler->process($blog)) {
+           $url = $this->container->get('router')->generate('bthuillier_main_blog_list');
+           return new RedirectResponse($url); 
         }
-        return array("form" => $form->createView(), "blog" => $blog);
+        return array("form" => $handler->getFormView(), "blog" => $blog);
     }
 
 }

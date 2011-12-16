@@ -5,6 +5,7 @@ namespace Bthuillier\Bundle\MainBundle\Form\Handler;
 use Bthuillier\Bundle\MainBundle\Document\Blog;
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
+use Bthuillier\Bundle\MainBundle\Manager\BlogManager;
 
 /**
  * Description of BlogFormHandler
