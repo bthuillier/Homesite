@@ -51,6 +51,7 @@ class BlogController extends BaseController {
         $factory = $this->container->get('form.factory');
         $form = $factory->create(new BlogType());
 
+
         $blog = new Blog();
         $form->setData($blog);
         $request = $this->container->get('request');
