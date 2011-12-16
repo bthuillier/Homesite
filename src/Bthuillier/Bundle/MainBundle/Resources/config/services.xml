@@ -5,9 +5,14 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <parameters>
         <parameter key="bthuillier_main.blog_manager.class">Bthuillier\Bundle\MainBundle\Manager\BlogManager</parameter>         
-      
+        <parameter key="bthuillier_main.blog.form_handler.class">Bthuillier\Bundle\MainBundle\Form\Handler\BlogFormHandler</parameter>
     </parameters>
     <services>
+        <service id="bthuillier_main.blog.form_handler" scope="request">
+            <argument type="service" id="bthuillier_main.blog.form" />
+            <argument type="service" id="request" />
+            <argument type="service" id="bthuillier_main.blog_manager" />
+        </service>
         <service id="bthuillier_main.blog.form" factory-method="createNamed" factory-service="form.factory" class="Symfony\Component\Form\Form">
             <argument>bthuillier_main_blog</argument>
             <argument>bthuillier_main_blog_form</argument>
