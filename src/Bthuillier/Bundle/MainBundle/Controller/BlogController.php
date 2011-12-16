@@ -21,7 +21,7 @@ class BlogController extends BaseController {
      * @return \Bthuillier\Bundle\MainBundle\Manager\BlogManager
      */
     protected function getManager() {
-        return $this->get("bthuillier.blog_manager");
+        return $this->get("bthuillier_main.blog_manager");
     }
     
     public function recentBlogsAction() {
@@ -48,9 +48,8 @@ class BlogController extends BaseController {
      * @Secure(roles="ROLE_ADMIN")
      */
     public function newAction() {
-        $factory = $this->container->get('form.factory');
-        $form = $factory->create(new BlogType());
-
+        
+        $form = $this->get("bthuillier_main.blog.form");
 
         $blog = new Blog();
         $form->setData($blog);
@@ -58,6 +57,7 @@ class BlogController extends BaseController {
         if ($request->getMethod() == 'POST') {
             $form->bindRequest($request);
             if ($form->isValid()) {
+                $blog->setAuthor($this->get("security.context")->getToken()->getUser());
                 $this->getManager()->save($blog);
                 $url = $this->container->get('router')->generate('bthuillier_main_blog_list');
                 return new RedirectResponse($url);

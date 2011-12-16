@@ -4,14 +4,20 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <parameters>
-        <parameter key="bthuillier.blog_manager.class">Bthuillier\Bundle\MainBundle\Manager\BlogManager</parameter>         
+        <parameter key="bthuillier_main.blog_manager.class">Bthuillier\Bundle\MainBundle\Manager\BlogManager</parameter>         
       
     </parameters>
     <services>
-        <service id="bthuillier.blog_manager" class="%bthuillier.blog_manager.class%">
+        <service id="bthuillier_main.blog.form" factory-method="createNamed" factory-service="form.factory" class="Symfony\Component\Form\Form">
+            <argument>bthuillier_main_blog</argument>
+            <argument>bthuillier_main_blog_form</argument>
+        </service>        
+        <service id="bthuillier_main.blog_manager" class="%bthuillier_main.blog_manager.class%">
             <argument type="service" id="doctrine.odm.mongodb.document_manager" />
         </service>
-        
+        <service id="bthuillier_main.blog.form.type" class="Bthuillier\Bundle\MainBundle\Form\Type\BlogType">
+            <tag name="form.type" alias="bthuillier_main_blog" />
+        </service>        
     </services>
 
 </container>

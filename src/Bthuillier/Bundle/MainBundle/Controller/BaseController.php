@@ -39,4 +39,12 @@ class BaseController extends ContainerAware {
     protected function getRepository($documentName) {
         return $this->getDoctrine()->getRepository($documentName);
     }
+    
+    /**
+     *
+     * @return \Symfony\Component\Form\FormFactory
+     */
+    protected function getFormFactory() {
+        return $this->container->get('form.factory');
+    }
 }

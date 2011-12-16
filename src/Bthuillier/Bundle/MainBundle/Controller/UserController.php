@@ -28,7 +28,7 @@ class UserController extends BaseController {
         if ($request->getMethod() == 'POST') {
             $form->bindRequest($request);
             if ($form->isValid()) {
-                $dm = $this->getManager();
+                $dm = $this->getDocumentManager();
                 $dm->persist($user);
                 $dm->flush();
                 $url = $this->container->get('router')->generate('bthuillier_main_user_index');
