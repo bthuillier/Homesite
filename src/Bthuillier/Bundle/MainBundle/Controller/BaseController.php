@@ -27,7 +27,7 @@ class BaseController extends ContainerAware {
     /**
      * @return Doctrine\ODM\MongoDB\DocumentManager
      */
-    protected function getManager() {
+    protected function getDocumentManager() {
         return $this->getDoctrine()->getManager();
     }
     
