@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use JMS\SecurityExtraBundle\Annotation\Secure;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Description of BlogController
@@ -85,6 +86,9 @@ class BlogController extends BaseController {
      */
     public function deleteAction($slug) {
         $blog = $this->getManager()->getBlog($slug);
+        if($blog === null) {
+            throw new NotFoundHttpException(\sprintf("l'article avec le slug '%s' n'existe pas", $slug));
+        }
         $this->getManager()->delete($blog);
         $url = $this->container->get('router')
                 ->generate('bthuillier_main_blog_list');
@@ -97,6 +101,9 @@ class BlogController extends BaseController {
      */
     public function showAction($slug) {
         $blog = $this->getManager()->getBlog($slug);
+        if($blog === null) {
+            throw new NotFoundHttpException(\sprintf("l'article avec le slug '%s' n'existe pas", $slug));
+        }        
         return array("blog" => $blog);
     }
     
@@ -108,7 +115,9 @@ class BlogController extends BaseController {
     public function editAction($slug) {
         
         $blog = $this->getManager()->getBlog($slug);
-        
+        if($blog === null) {
+            throw new NotFoundHttpException(\sprintf("l'article avec le slug '%s' n'existe pas", $slug));
+        }       
         $factory = $this->container->get('form.factory');
         $form = $factory->create(new BlogType());
         $form->setData($blog);
