@@ -22,7 +22,7 @@ class BlogController extends BaseController {
      * @return \Bthuillier\Bundle\MainBundle\Manager\BlogManager
      */
     protected function getManager() {
-        return $this->get("bthuillier.blog_manager");
+        return $this->get("bthuillier_main.blog_manager");
     }
     
     public function recentBlogsAction() {
@@ -49,22 +49,15 @@ class BlogController extends BaseController {
      * @Secure(roles="ROLE_ADMIN")
      */
     public function newAction() {
-        $factory = $this->container->get('form.factory');
-        $form = $factory->create(new BlogType());
-
-
+        
         $blog = new Blog();
-        $form->setData($blog);
-        $request = $this->container->get('request');
-        if ($request->getMethod() == 'POST') {
-            $form->bindRequest($request);
-            if ($form->isValid()) {
-                $this->getManager()->save($blog);
-                $url = $this->container->get('router')->generate('bthuillier_main_blog_list');
-                return new RedirectResponse($url);
-            }
+        $handler = $this->get("bthuillier_main.blog.form_handler");
+        
+        if($handler->process($blog)) {
+           $url = $this->container->get('router')->generate('bthuillier_main_blog_list');
+           return new RedirectResponse($url); 
         }
-        return array("form" => $form->createView());
+        return array("form" => $handler->getFormView());
     }
 
     /**
@@ -115,23 +108,13 @@ class BlogController extends BaseController {
     public function editAction($slug) {
         
         $blog = $this->getManager()->getBlog($slug);
-        if($blog === null) {
-            throw new NotFoundHttpException(\sprintf("l'article avec le slug '%s' n'existe pas", $slug));
-        }       
-        $factory = $this->container->get('form.factory');
-        $form = $factory->create(new BlogType());
-        $form->setData($blog);
-        $request = $this->container->get('request');
+        $handler = $this->get("bthuillier_main.blog.form_handler");
         
-        if ($request->getMethod() == 'POST') {
-            $form->bindRequest($request);
-            if ($form->isValid()) {
-                $this->getManager()->save($blog);
-                $url = $this->container->get('router')->generate('bthuillier_main_blog_list');
-                return new RedirectResponse($url);
-            }
+        if($handler->process($blog)) {
+           $url = $this->container->get('router')->generate('bthuillier_main_blog_list');
+           return new RedirectResponse($url); 
         }
-        return array("form" => $form->createView(), "blog" => $blog);
+        return array("form" => $handler->getFormView(), "blog" => $blog);
     }
 
 }
