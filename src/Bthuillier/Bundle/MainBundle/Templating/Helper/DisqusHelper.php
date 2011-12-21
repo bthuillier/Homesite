@@ -7,17 +7,14 @@ use Symfony\Component\Templating\EngineInterface;
 
 class DisqusHelper extends Helper {
     protected $templating;
-    protected $logging;
-    protected $culture;
-    protected $scope;
-    protected $facebook;
+    protected $developer;
+    protected $appName;
 
-    public function __construct(EngineInterface $templating, $logging = true, $culture = 'en_US', array $scope = array())
+    public function __construct(EngineInterface $templating, $appName, $developer = 0)
     {
         $this->templating  = $templating;
-        $this->logging     = $logging;
-        $this->culture     = $culture;
-        $this->scope       = $scope;
+        $this->developer   = $developper;
+        $this->appName     = $appName;
     }
 
     /**
@@ -40,31 +37,16 @@ class DisqusHelper extends Helper {
      *
      * @return string An HTML string
      */
-    public function initialize($parameters = array(), $name = null)
+    public function initialize($disqus_identifier, $parameters = array(), $name = null)
     {
         $name = $name ?: 'BthuillierMainBundle::disqus.html.twig';
         return $this->templating->render($name, $parameters + array(
-            'async'       => true,
-            'fbAsyncInit' => '',
-            'appId'       => (string) $this->facebook->getAppId(),
-            'xfbml'       => false,
-            'oauth'       => true,
-            'status'      => false,
-            'cookie'      => true,
-            'logging'     => $this->logging,
-            'culture'     => $this->culture,
+            'disqus_identifier'  => $disqus_identifier,
+            'disqus_shortname'   => $this->appName,
+            'developer'          => $this->developer,
         ));
     }
 
-    public function loginButton($parameters = array(), $name = null)
-    {
-        $name = $name ?: 'FOSFacebookBundle::loginButton.html.php';
-        return $this->templating->render($name, $parameters + array(
-            'autologoutlink' => 'false',
-            'label'          => '',
-            'scope'          => implode(',', $this->scope),
-        ));
-    }
 
     /**
      * @codeCoverageIgnore
