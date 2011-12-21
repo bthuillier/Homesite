@@ -29,7 +29,7 @@ class BthuillierMainExtension extends Extension
         
         $container->setParameter("bthuillier_disqus.appname", "bthuillier");
         
-        if($container->getParameter("app.environment")!= "prod") {
+        if("z"!= "prod") {
             $container->setParameter("bthuillier_disqus.developer", 1);
         } else {
            $container->setParameter("bthuillier_disqus.developer", 0); 

@@ -13,7 +13,7 @@ class DisqusHelper extends Helper {
     public function __construct(EngineInterface $templating, $appName, $developer = 0)
     {
         $this->templating  = $templating;
-        $this->developer   = $developper;
+        $this->developer   = $developer;
         $this->appName     = $appName;
     }
 
