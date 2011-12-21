@@ -24,5 +24,15 @@ class BthuillierMainExtension extends Extension
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
+        $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader->load('disqus.xml');
+        
+        $container->setParameter("bthuillier_disqus.appname", "bthuillier");
+        
+        if($container->getParameter("app.environment")!= "prod") {
+            $container->setParameter("bthuillier_disqus.developer", 1);
+        } else {
+           $container->setParameter("bthuillier_disqus.developer", 0); 
+        }
     }
 }

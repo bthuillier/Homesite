@@ -1,7 +1,11 @@
+
 <container xmlns="http://symfony.com/schema/dic/services"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
-
+    <parameters>
+        <parameter key="bthuillier_disqus.helper.class">Bthuillier\Bundle\MainBundle\Templating\Helper\DisqusHelper</parameter>
+        <parameter key="bthuillier_disqus.twig.class">Bthuillier\Bundler\MainBundle\Twig\Extension\DisqusExtension</parameter>
+    </parameters>
     <services>
 
         <service id="bthuillier_disqus.helper" class="%bthuillier_disqus.helper.class%">
