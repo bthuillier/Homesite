@@ -11,7 +11,7 @@
             <tag name="templating.helper" alias="disqus" />
         </service>
 
-        <service id="fbthuillier_disqus.twig" class="%bthuillier_disqus.twig.class%">
+        <service id="bthuillier_disqus.twig" class="%bthuillier_disqus.twig.class%">
             <argument type="service" id="service_container" />
             <tag name="twig.extension" />
         </service>
