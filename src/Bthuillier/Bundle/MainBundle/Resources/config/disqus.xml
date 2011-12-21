@@ -1,0 +1,20 @@
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+
+        <service id="bthuillier_disqus.helper" class="%bthuillier_disqus.helper.class%">
+            <argument type="service" id="templating" />
+            <argument>%bthuillier_disqus.appname%</argument>
+            <argument>%bthuillier_disqus.developer%</argument>
+            <tag name="templating.helper" alias="disqus" />
+        </service>
+
+        <service id="fbthuillier_disqus.twig" class="%bthuillier_disqus.twig.class%">
+            <argument type="service" id="service_container" />
+            <tag name="twig.extension" />
+        </service>
+
+    </services>
+</container>
