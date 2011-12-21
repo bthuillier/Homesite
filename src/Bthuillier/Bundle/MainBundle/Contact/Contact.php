@@ -14,6 +14,7 @@ class Contact {
     protected $subject;
     protected $body;
     
+
     public function getMail() {
         return $this->mail;
     }

@@ -99,7 +99,7 @@ class BlogController extends BaseController {
         }        
         return array("blog" => $blog);
     }
-    
+
     /**
      * @Route("/{slug}/edit")
      * @Template

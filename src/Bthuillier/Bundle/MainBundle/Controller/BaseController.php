@@ -11,6 +11,11 @@ use Symfony\Component\DependencyInjection\ContainerAware;
  */
 class BaseController extends ContainerAware {
     
+    /**
+     * @param string $id the id of a service
+     *
+     * @return a service
+     */
     protected function get($id) {
         return $this->container->get($id);
     }
