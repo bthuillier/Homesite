@@ -16,11 +16,12 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
  */
 class BlogControllerTest extends WebTestCase {
     
-    public function testIndex() {
+    public function testIndexAsAnonymous() {
         $client = static::createClient();
 
         $crawler = $client->request('GET', '/blog/');
 
-        $this->assertTrue($crawler->filter('article')->count() == 5);        
+        $this->assertTrue($crawler->filter('article')->count() == 5);
+        $this->assertTrue($crawler->filter('#active a:contains("Blog")')->count() > 0);
     }
 }
