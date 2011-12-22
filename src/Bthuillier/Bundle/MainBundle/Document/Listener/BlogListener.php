@@ -33,7 +33,9 @@ class BlogListener implements EventSubscriber {
 
         $document = $args->getDocument();
         if($document instanceof Blog) {
-            $document->setAuthor($this->container->get("security.context")->getUser());
+            if($this->container->get("security.context")->getUser()){
+                $document->setAuthor($this->container->get("security.context")->getUser());
+            }
         }
         
     }

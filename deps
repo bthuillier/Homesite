@@ -79,6 +79,14 @@
     git=http://github.com/l3pp4rd/DoctrineExtensions.git 
     target=gedmo-doctrine-extensions
     version=2.1.x
+
 [StofDoctrineExtensionsBundle]
     git=http://github.com/stof/StofDoctrineExtensionsBundle.git
     target=bundles/Stof/DoctrineExtensionsBundle
+
+[doctrine-fixtures]
+    git=http://github.com/doctrine/data-fixtures.git
+
+[DoctrineFixturesBundle]
+    git=http://github.com/symfony/DoctrineFixturesBundle.git
+    target=/bundles/Symfony/Bundle/DoctrineFixturesBundle
