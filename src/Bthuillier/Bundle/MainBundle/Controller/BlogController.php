@@ -108,6 +108,9 @@ class BlogController extends BaseController {
     public function editAction($slug) {
         
         $blog = $this->getManager()->getBlog($slug);
+        if($blog === null) {
+            throw new NotFoundHttpException(\sprintf("l'article avec le slug '%s' n'existe pas", $slug));
+        }         
         $handler = $this->get("bthuillier_main.blog.form_handler");
         
         if($handler->process($blog)) {
