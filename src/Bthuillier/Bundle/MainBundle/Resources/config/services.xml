@@ -6,28 +6,50 @@
     <parameters>
         <parameter key="bthuillier_main.blog_manager.class">Bthuillier\Bundle\MainBundle\Manager\BlogManager</parameter>         
         <parameter key="bthuillier_main.blog.form_handler.class">Bthuillier\Bundle\MainBundle\Form\Handler\BlogFormHandler</parameter>
+        <parameter key="bthuillier_main.contact.form_handler.class">Bthuillier\Bundle\MainBundle\Form\Handler\ContactFormHandler</parameter>
     </parameters>
     <services>
+        
+        <!--
+            Form Handler For The Blog
+        -->
         <service id="bthuillier_main.blog.form_handler" class="%bthuillier_main.blog.form_handler.class%" scope="request">
             <argument type="service" id="bthuillier_main.blog.form" />
             <argument type="service" id="request" />
             <argument type="service" id="bthuillier_main.blog_manager" />
         </service>
+        
         <service id="bthuillier_main.blog.form" factory-method="createNamed" factory-service="form.factory" class="Symfony\Component\Form\Form">
             <argument>bthuillier_main_blog</argument>
             <argument>bthuillier_main_blog_form</argument>
+        </service>
+        
+        <service id="bthuillier_main.blog.form.type" class="Bthuillier\Bundle\MainBundle\Form\Type\BlogType">
+            <tag name="form.type" alias="bthuillier_main_blog" />
         </service>        
         <service id="bthuillier_main.blog_manager" class="%bthuillier_main.blog_manager.class%">
             <argument type="service" id="doctrine.odm.mongodb.document_manager" />
         </service>
-        <service id="bthuillier_main.blog.form.type" class="Bthuillier\Bundle\MainBundle\Form\Type\BlogType">
-            <tag name="form.type" alias="bthuillier_main_blog" />
-        </service>
+
         
-          <service id="bthuillier_main.blog.listener" class="Bthuillier\Bundle\MainBundle\Document\Listener\BlogListener">
+        <service id="bthuillier_main.blog.listener" class="Bthuillier\Bundle\MainBundle\Document\Listener\BlogListener">
             <tag name="doctrine.common.event_subscriber" event="postSave" />
             <argument type="service" id="service_container" />
-        </service>     
+        </service>
+        
+        <service id="bthuillier_main.contact.form_handler" class="%bthuillier_main.contact.form_handler.class%" scope="request">
+            <argument type="service" id="bthuillier_main.contact.form" />
+            <argument type="service" id="request" />
+            <argument type="service" id="mailer" />
+        </service>
+        <service id="bthuillier_main.contact.form" factory-method="createNamed" factory-service="form.factory" class="Symfony\Component\Form\Form">
+            <argument>bthuillier_main_contact</argument>
+            <argument>bthuillier_main_contact_form</argument>
+        </service>
+        
+        <service id="bthuillier_main.contact.form.type" class="Bthuillier\Bundle\MainBundle\Form\Type\ContactType">
+            <tag name="form.type" alias="bthuillier_main_contact" />
+        </service>         
     </services>
 
 </container>

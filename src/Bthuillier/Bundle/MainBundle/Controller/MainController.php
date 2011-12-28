@@ -36,11 +36,12 @@ class MainController extends BaseController {
      * @Template()
      */
     public function contactAction() {
-        $factory = $this->container->get('form.factory');
-        $form = $factory->create(new ContactType());
+        $handler = $this->get("bthuillier_main.contact.form_handler");
+        $contact = new Contact();
+        if($handler->process($contact))  {
+            
+        }
 
-        $blog = new Contact();
-        $form->setData($blog);
-        return array('form' => $form->createView());
+        return array('form' => $handler->getFormView());
     }    
 }

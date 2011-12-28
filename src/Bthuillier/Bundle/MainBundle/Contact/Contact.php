@@ -48,5 +48,11 @@ class Contact {
         $this->name = $name;
     }
     
+    public function clean() {
+        $this->body    = null;
+        $this->mail    = null;
+        $this->name    = null;
+        $this->subject = null;
+    }
     
 }
