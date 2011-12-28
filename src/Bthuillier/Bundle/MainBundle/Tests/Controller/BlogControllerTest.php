@@ -131,6 +131,23 @@ class BlogControllerTest extends WebTestCase {
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
     }
     
+    public function testDelete() {
+        $client = static::createClient();
+        
+        $crawler = $client->request('GET', '/blog/azerty/delete');
+        $this->assertEquals(302, $client->getResponse()->getStatusCode());
+        $this->assertTrue($client->getResponse()->isRedirect('http://localhost/login'));
+        
+        $client = $this->connect();
+        $crawler = $client->request('GET', '/blog/zerfzfd/delete');
+        $this->assertEquals(404, $client->getResponse()->getStatusCode());
+        
+        $crawler = $client->request('GET', '/blog/sqfdsfsf/delete');
+        $this->assertEquals(302,$client->getResponse()->getStatusCode());
+        $this->assertTrue($client->getResponse()->isRedirect('/blog/list'));
+        
+    }
+    
     protected function getDoctrine($client) {
         return $client
             ->getContainer()
