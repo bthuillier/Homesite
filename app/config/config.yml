@@ -58,10 +58,9 @@ doctrine_mongodb:
               StofDoctrineExtensionsBundle: false
 # Swiftmailer Configuration
 swiftmailer:
-    transport: %mailer_transport%
-    host:      %mailer_host%
-    username:  %mailer_user%
-    password:  %mailer_password%
+    transport: gmail
+    username:  %gmail_username%
+    password:  %gmail_password%
 
 jms_security_extra:
     secure_controllers:  true
