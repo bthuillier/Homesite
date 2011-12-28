@@ -3,7 +3,7 @@
 
 [twig]
     git=http://github.com/fabpot/Twig.git
-    version=v1.4.0
+    version=v1.5.0-RC1
    
 [monolog]
     git=http://github.com/Seldaek/monolog.git
@@ -23,7 +23,7 @@
 
 [swiftmailer]
     git=http://github.com/swiftmailer/swiftmailer.git
-    version=v4.1.2
+    version=v4.1.3
 
 [assetic]
     git=http://github.com/kriswallsmith/assetic.git
