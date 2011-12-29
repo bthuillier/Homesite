@@ -1,5 +1,6 @@
 {% extends "BthuillierMainBundle::layout.html.twig" %}
 {% block title %}{{ parent()}}Welcome{% endblock %}
+{% block page_name %}Bienvenue{%endblock%}
 {% block content %}
 <div class="row">
     <div class="span16">
@@ -15,9 +16,15 @@
     </div>
     <div class="span8">
         <h2 class="title-index">
-            In Progress
+            Qui suis-je ?
         </h2>
-        dsqfs ezg fdg zdfg ezrh sdf gsdffrsfsdreqsdfsf        
+        <p class="p-index">
+            Bienvenue sur mon site. Je m'appelle Benjamin Thuillier, je suis étudiant en dernière année
+            de cycle d'ingénierie informatique ( Bac+5 ) à l'EPSI de Montpellier.<br />
+            Vous pouvez consulter sur ce site mon <a href="{{ path('bthuillier_main_main_cv') }}">CV</a>,
+            prendre un peu de temps pour lire les articles de mon <a href="{{ path('bthuillier_main_blog_index') }}">Blog</a>. N'hesitez pas à me  <a  href="{{ path('bthuillier_main_main_contact')}}">contacter</a> si mon profil vous interesse ou simplement des besoins d'informations.
+        </p>
+
     </div>
 </div>
 {% endblock %}
