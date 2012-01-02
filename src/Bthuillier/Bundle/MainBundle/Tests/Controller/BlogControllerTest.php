@@ -78,7 +78,8 @@ class BlogControllerTest extends WebTestCase {
         $form = $crawler->filter('form input[type=submit]')->form(array(
             'bthuillier_main_blog_form[isActive]' => $blog->getIsActive(),
             'bthuillier_main_blog_form[body]' => $blog->getBody(),
-            'bthuillier_main_blog_form[title]' => $blog->getTitle()
+            'bthuillier_main_blog_form[title]' => $blog->getTitle(),
+            'bthuillier_main_blog_form[description]' => $blog->getTitle(),
         ));
         
         $client->submit($form);
@@ -108,6 +109,7 @@ class BlogControllerTest extends WebTestCase {
         $form = $crawler->filter('form input[type=submit]')->form(array(
             'bthuillier_main_blog_form[isActive]' => true,
             'bthuillier_main_blog_form[body]' => 'fsvfggfgdsfqfdsqfqdsfqsdfqsdg',
+            'bthuillier_main_blog_form[description]' => 'a blog post',
             'bthuillier_main_blog_form[title]' => 'sqfdsfsf'
         ));
         

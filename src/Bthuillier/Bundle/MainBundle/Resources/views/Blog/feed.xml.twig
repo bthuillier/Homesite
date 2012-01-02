@@ -14,7 +14,8 @@
    <link href="http://blog.bthuillier.fr/blog/show/{{ blog.slug }}"/>
    <id>{{ blog.slug }}</id>
    <updated>{{ blog.updatedAt|date("Y-m-d\TH:i:sP") }}</updated>
-   <summary>{{blog.body}}</summary>
+   <summary>{{blog.description}}</summary>
+   <content type="html">{{blog.body}}</content>
   </entry>
   {% endfor %}
 </feed>

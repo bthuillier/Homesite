@@ -34,7 +34,13 @@ class Blog {
      * @Assert\NotBlank
      */
     protected $body;
-
+    
+    /**
+     * @MongoDB\String
+     * @Assert\NotBlank
+     */
+    protected $description;
+    
     /**
      * @gedmo\Timestampable(on="create")
      * @MongoDB\Date
@@ -206,5 +212,25 @@ class Blog {
     public function getUpdatedAt()
     {
         return $this->updatedAt;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string $description
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 }

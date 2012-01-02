@@ -14,6 +14,7 @@ class BlogType extends AbstractType{
     public function buildForm(FormBuilder $builder, array $options)
     {
         $builder->add('title');
+        $builder->add('description','textarea');
         $builder->add('body','textarea');
         $builder->add('isActive');
     }
