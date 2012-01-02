@@ -148,6 +148,15 @@ class BlogControllerTest extends WebTestCase {
         
     }
     
+    public function testFeed() {
+        $client = static::createClient();
+        
+        $crawler = $client->request('GET', '/blog/feed.xml');
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());   
+        $this->assertTrue($crawler->filter('feed')->count() > 0);
+        $this->assertTrue($crawler->filter('entry')->count() > 0 && $crawler->filter('entry')->count() <= 5);
+    }
+    
     protected function getDoctrine($client) {
         return $client
             ->getContainer()

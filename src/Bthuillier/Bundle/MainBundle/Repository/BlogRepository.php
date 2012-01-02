@@ -15,4 +15,11 @@ class BlogRepository extends DocumentRepository
     public function lastBlogs($number = 5) {
         return $this->findBy(array("isActive"=> true), array("publishedAt" => "desc"), $number);
     }
+    
+    public function getFirstBlog() {
+        return $this->createQueryBuilder()->sort("publishedAt","desc")
+                ->field('isActive')->equals(true)
+                ->getQuery()
+                ->getSingleResult();
+    }
 }

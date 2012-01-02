@@ -119,5 +119,15 @@ class BlogController extends BaseController {
         }
         return array("form" => $handler->getFormView(), "blog" => $blog);
     }
+    
+    /**
+     * @Route("/feed.{_format}",requirements={"_format" = "xml"})
+     * @Template
+     */
+    public function feedAction() {
+        $blogs = $this->getManager()->getRepository()->lastBlogs();
+        $firstBlog  = $this->getManager()->getRepository()->getFirstBlog();
+        return array('firstBlog' => $firstBlog,'blogs' => $blogs);
+    }
 
 }
