@@ -40,7 +40,14 @@ class Blog {
      * @MongoDB\Date
      */
     protected $publishedAt;
-
+    
+    /**
+     * @gedmo\Timestampable(on="update")
+     * @MongoDB\Date
+     * 
+     */
+    protected $updatedAt;
+    
     /**
      * @MongoDB\Boolean
      */
@@ -179,5 +186,25 @@ class Blog {
     public function getAuthor()
     {
         return $this->author;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param date $updatedAt
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return date $updatedAt
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
     }
 }
