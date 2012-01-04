@@ -25,7 +25,7 @@ class BlogControllerTest extends WebTestCase {
             ->filter('form input[type=submit]')
             ->form(array(
             '_username' => 'John',
-            '_password' => 'nabix4'
+            '_password' => 'john'
         ));
         
         $client->submit($form);
