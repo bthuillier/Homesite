@@ -11,6 +11,9 @@ namespace Bthuillier\Bundle\MainBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
+/**
+ * @author Benjamin Thuillier <benjaminthuillier@gmail.com>
+ */
 class BthuillierMainBundle extends Bundle
 {
 }
