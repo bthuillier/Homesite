@@ -7,6 +7,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace Bthuillier\Bundle\MainBundle\Twig\Extension;
 
 use Bthuillier\Bundle\MainBundle\Templating\Helper\DisqusHelper;
