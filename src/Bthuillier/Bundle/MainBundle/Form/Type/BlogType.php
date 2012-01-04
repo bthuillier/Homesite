@@ -24,7 +24,7 @@ class BlogType extends AbstractType{
         $builder->add('title');
         $builder->add('description','textarea');
         $builder->add('body','textarea');
-        $builder->add('isActive');
+        $builder->add('isActive','checkbox', array('required' => false));
     }
     
     public function getDefaultOptions(array $options)
