@@ -64,6 +64,7 @@ class Blog {
      */
     private $author;    
 
+    
     /**
      * Get id
      *
@@ -233,4 +234,5 @@ class Blog {
     {
         return $this->description;
     }
+
 }

@@ -14,6 +14,7 @@ $loader->registerNamespaces(array(
     'Doctrine\\MongoDB'         => __DIR__.'/../vendor/doctrine-mongodb/lib',
     'Doctrine\\Common'          => __DIR__.'/../vendor/doctrine-common/lib',
     'Doctrine\\DBAL'            => __DIR__.'/../vendor/doctrine-dbal/lib',
+    'Doctrine\\Tests'                => __DIR__.'/../vendor/doctrine/tests',   
     'Monolog'          => __DIR__.'/../vendor/monolog/src',
     'Assetic'          => __DIR__.'/../vendor/assetic/src',
     'Metadata'         => __DIR__.'/../vendor/metadata/src',
