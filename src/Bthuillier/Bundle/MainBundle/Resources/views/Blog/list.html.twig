@@ -4,7 +4,7 @@
 <table class="zebra-striped">
     <thead>
         <tr>
-            <th>title</th><th>slug</th><th>release date</th><th colspan="2">Actions </th>
+            <th>title</th><th>slug</th><th>release date</th><th colspan="3">Actions </th>
         </tr>
     </thead>
     <tbody>
@@ -14,9 +14,9 @@
             <td>{{ blog.slug }}</td>
             <td>{{ blog.getPublishedAt().format('d F Y') }}</td>
             <td><a class="btn primary" href="{{path('bthuillier_main_blog_edit', { 'slug': blog.slug })}}">edit</a></td>
-            <td><a class="btn danger" href="{{path('bthuillier_main_blog_delete', { 'slug': blog.slug })}}">
-                delete
-            </a></td>
+            <td><a class="btn danger" href="{{path('bthuillier_main_blog_delete', { 'slug': blog.slug })}}">delete</a></td>
+            <td><a class="btn success" href="{{path('bthuillier_main_blog_preview', {'slug': blog.slug})}}">preview</a></td>
+            
         </tr>
     {% endfor %}
     </tbody>

@@ -101,7 +101,8 @@ class BlogController extends BaseController {
      * @Template()
      */
     public function showAction($slug) {
-        $blog = $this->getManager()->getBlog($slug);
+        $blog = $this->getManager()->getBlogActive($slug);
+        
         if($blog === null) {
             throw new NotFoundHttpException(\sprintf("l'article avec le slug '%s' n'existe pas", $slug));
         }        
@@ -136,6 +137,20 @@ class BlogController extends BaseController {
         $blogs = $this->getManager()->getRepository()->lastBlogs();
         $firstBlog  = $this->getManager()->getRepository()->getFirstBlog();
         return array('firstBlog' => $firstBlog,'blogs' => $blogs);
+    }
+    
+    /**
+     *
+     * @Route("/preview/{slug}")
+     * @Template
+     * @Secure(roles="ROLE_ADMIN")
+     */
+    public function previewAction($slug){
+        $blog = $this->getManager()->getBlog($slug);
+        if($blog === null) {
+            throw new NotFoundHttpException(\sprintf("l'article avec le slug '%s' n'existe pas", $slug));
+        }        
+        return array("blog" => $blog);        
     }
 
 }

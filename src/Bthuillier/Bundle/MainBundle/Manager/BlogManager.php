@@ -40,8 +40,16 @@ class BlogManager extends BaseManager{
     public function getBlog($slug) {
         return $this->repository->findOneBy(array('slug' => $slug));
     }
-    
 
+    /**
+     *
+     * @param string $slug 
+     * 
+     * @return \Bthuillier\Bundle\MainBundle\Document\Blog
+     */
+    public function getBlogActive($slug) {
+        return $this->repository->findOneBy(array('slug' => $slug, 'isActive' => true));
+    }
     /**
      *
      * @return \Bthuillier\Bundle\MainBundle\Repository\BlogRepository
