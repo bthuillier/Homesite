@@ -18,32 +18,23 @@ class DisqusHelper extends Helper {
     }
 
     /**
-     * Returns the HTML necessary for initializing the JavaScript SDK.
+     * Returns the HTML necessary for initializing the JavaScript SDK of Disqus.
      *
      * The default template includes the following parameters:
      *
-     *  * async
-     *  * fbAsyncInit
-     *  * appId
-     *  * xfbml
-     *  * oauth
-     *  * status
-     *  * cookie
-     *  * logging
-     *  * culture
+     *  * disqus_identifier
      *
      * @param array  $parameters An array of parameters for the initialization template
      * @param string $name       A template name
      *
      * @return string An HTML string
      */
-    public function initialize($disqus_identifier, $parameters = array(), $name = null)
+    public function initialize($parameters = array(), $name = null)
     {
         $name = $name ?: 'BthuillierMainBundle::disqus.html.twig';
         return $this->templating->render($name, $parameters + array(
-            'disqus_identifier'  => $disqus_identifier,
             'disqus_shortname'   => $this->appName,
-            'developer'          => $this->developer,
+            'disqus_developer'   => $this->developer,
         ));
     }
 
