@@ -160,6 +160,43 @@ class BlogControllerTest extends WebTestCase {
         $this->assertTrue($crawler->filter('entry')->count() > 0 && $crawler->filter('entry')->count() <= 5);
     }
     
+    public function testPreview() {
+        $client = static::createClient();
+        
+        $crawler = $client->request('GET', '/blog/preview/azerty');
+        $this->assertEquals(302, $client->getResponse()->getStatusCode());
+        $this->assertTrue($client->getResponse()->isRedirect('http://localhost/login'));
+      
+        $client = $this->connect();
+        $crawler = $client->request('GET', '/blog/preview/azerty');
+        $this->assertEquals(404, $client->getResponse()->getStatusCode());
+        
+        $client = $this->connect();
+        $blog = $this->getBlog($client);
+        $crawler = $client->request('GET', \sprintf('/blog/preview/%s', $blog->getSlug()));
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+        
+        $blog = $this->getBlogNotActive($client);
+        $crawler = $client->request('GET', \sprintf('/blog/preview/%s',$blog->getSlug()));
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());        
+        
+        
+    }
+    
+    public function testShow() {
+        $client = static::createClient();
+        $crawler = $client->request('GET', '/blog/show/azerty');
+        $this->assertEquals(404, $client->getResponse()->getStatusCode());
+        
+        $blog = $this->getBlogNotActive($client);
+        $crawler = $client->request('GET', \sprintf('/blog/show/%s',$blog->getSlug()));
+        $this->assertEquals(404, $client->getResponse()->getStatusCode());
+        
+        $blog = $this->getBlogActive($client);
+        $crawler = $client->request('GET', \sprintf('/blog/show/%s',$blog->getSlug()));
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());        
+    }
+    
     protected function getDoctrine($client) {
         return $client
             ->getContainer()
@@ -172,6 +209,18 @@ class BlogControllerTest extends WebTestCase {
         foreach($blogs as $blog) {
             return $blog;
         }
+    }
+    
+    protected function getBlogNotActive($client) {
+        $blog = $this->getDoctrine($client)->getRepository('BthuillierMainBundle:Blog')
+                ->findOneBy(array('isActive' => false));
+        return $blog;
+    }
+    
+    protected function getBlogActive($client) {
+        $blog = $this->getDoctrine($client)->getRepository('BthuillierMainBundle:Blog')
+                ->findOneBy(array('isActive' => true));
+        return $blog;        
     }
     
 }
