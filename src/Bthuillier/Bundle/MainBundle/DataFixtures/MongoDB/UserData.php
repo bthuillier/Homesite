@@ -24,7 +24,7 @@ class UserData extends AbstractFixture implements OrderedFixtureInterface, Conta
         $user = new User();
         $user->setUsername('John');
         $user->setEmail('john.doe@example.com');
-        $user->setPlainPassword('nabix4');
+        $user->setPlainPassword('john');
         $user->addRole("ROLE_ADMIN");
         $user->setEnabled(true);
         $userManager->updateUser($user, false);

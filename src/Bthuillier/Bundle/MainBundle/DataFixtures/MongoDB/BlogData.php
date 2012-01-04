@@ -24,6 +24,7 @@ class BlogData extends AbstractFixture implements OrderedFixtureInterface{
         $blog->setBody('azertyuiop');
         $blog->setIsActive(true);
         $blog->setTitle('lawl');
+        $blog->setDescription('still be there');
         $blog->setAuthor($manager->merge($this->getReference('admin-user')));
         $manager->persist($blog);
         
@@ -31,6 +32,7 @@ class BlogData extends AbstractFixture implements OrderedFixtureInterface{
         $blog->setBody('azertyuiop');
         $blog->setIsActive(true);
         $blog->setTitle('lawl');
+        $blog->setDescription('still be there');        
         $blog->setAuthor($manager->merge($this->getReference('admin-user')));
         $manager->persist($blog);        
         
@@ -45,6 +47,7 @@ class BlogData extends AbstractFixture implements OrderedFixtureInterface{
         $blog->setBody('azertyuiop');
         $blog->setIsActive(true);
         $blog->setTitle('lawl');
+        $blog->setDescription('still be there');        
         $blog->setAuthor($manager->merge($this->getReference('admin-user')));
         $manager->persist($blog);
         
@@ -52,6 +55,7 @@ class BlogData extends AbstractFixture implements OrderedFixtureInterface{
         $blog->setBody('azertyuiop');
         $blog->setIsActive(true);
         $blog->setTitle('lawl');
+        $blog->setDescription('still be there');        
         $blog->setAuthor($manager->merge($this->getReference('admin-user')));
         $manager->persist($blog);
  
@@ -59,6 +63,7 @@ class BlogData extends AbstractFixture implements OrderedFixtureInterface{
         $blog->setBody('azertyuiop');
         $blog->setIsActive(true);
         $blog->setTitle('lawl');
+        $blog->setDescription('still be there');        
         $blog->setAuthor($manager->merge($this->getReference('admin-user')));
         $manager->persist($blog);
         
