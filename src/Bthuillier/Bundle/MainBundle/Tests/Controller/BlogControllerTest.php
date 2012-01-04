@@ -1,18 +1,19 @@
 <?php
+/*
+ * This file is part of the Homesite project.
+ *
+ * (c) Benjamin Thuillier <http://blog.bthuillier.fr/>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 namespace Bthuillier\Bundle\MainBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- * Description of BlogControllerTest
- *
- * @author bthuillier
+ * @author Benjamin Thuillier <benjaminthuillier@gmail.com>
  */
 class BlogControllerTest extends WebTestCase {
     

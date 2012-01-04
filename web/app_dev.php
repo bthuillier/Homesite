@@ -1,4 +1,12 @@
 <?php
+/*
+ * This file is part of the Homesite project.
+ *
+ * (c) Benjamin Thuillier <http://blog.bthuillier.fr/>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 // if you don't want to setup permissions the proper way, just uncomment the following PHP line
 // read http://symfony.com/doc/current/book/installation.html#configuration-and-setup for more information
