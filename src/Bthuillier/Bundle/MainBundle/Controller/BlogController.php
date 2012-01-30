@@ -24,7 +24,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  *
  * @author bthuillier
  */
-class BlogController extends BaseController {
+class BlogController extends MongoController {
     
     /**
      * @return \Bthuillier\Bundle\MainBundle\Manager\BlogManager

@@ -22,7 +22,7 @@ use Bthuillier\Bundle\MainBundle\Contact\Contact;
  *
  * @author bthuillier
  */
-class MainController extends BaseController {
+class MainController extends MongoController {
     /**
      * @Route("/")
      * @Template()

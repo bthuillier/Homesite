@@ -19,6 +19,14 @@ use Symfony\Component\DependencyInjection\ContainerAware;
  * @author Benjamin Thuillier <benjaminthuillier@gmail.com>
  */
 class MongoController extends BaseController{
+
+    /**
+     * 
+     * @return Symfony\Bundle\DoctrineMongoDBBundle\ManagerRegistry
+     */
+    protected function getDoctrine() {
+        return $this->container->get('doctrine.odm.mongodb');
+    }    
     
     /**
      * @return Doctrine\ODM\MongoDB\DocumentManager

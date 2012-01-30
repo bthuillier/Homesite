@@ -20,7 +20,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
  *
  * @author bthuillier
  */
-class UserController extends BaseController {
+class UserController extends MongoController {
 
     /**
      * @Route("/")
