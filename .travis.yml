@@ -3,4 +3,6 @@ language:  php
 php:
   - 5.3
 script: phpunit -c app/
-before_script: php bin/vendors install
+before_script: 
+  - cp app/parameters.yml.dist app/parameters.yml
+  - php bin/vendors install
