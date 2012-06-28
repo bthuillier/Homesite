@@ -4,12 +4,12 @@ php:
   - 5.3
 script: phpunit -c app/
 before_script: 
+  - cp app/config/parameters.yml.dist app/config/parameters.yml
   - wget http://pecl.php.net/get/mongo-1.2.9.tgz
   - tar -xzf mongo-1.2.9.tgz
   - sh -c "cd mongo-1.2.9 && phpize && ./configure && sudo make install"
   - echo "extension=mongo.so" >> `php --ini | grep "Loaded Configuration" | sed -e "s|.*:\s*||"`
   - wget http://getcomposer.org/composer.phar
   - php composer.phar install
-  - cp app/config/parameters.yml.dist app/config/parameters.yml
   - php app/console doctrine:mongodb:schema:create --env=test
   - php app/console doctrine:mongodb:fixtures:load --env=test
