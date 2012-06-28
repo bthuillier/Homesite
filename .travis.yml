@@ -8,7 +8,8 @@ before_script:
   - tar -xzf mongo-1.2.9.tgz
   - sh -c "cd mongo-1.2.9 && phpize && ./configure && sudo make install"
   - echo "extension=mongo.so" >> `php --ini | grep "Loaded Configuration" | sed -e "s|.*:\s*||"`
+  - wget http://getcomposer.org/composer.phar
+  - php composer.phar install
   - cp app/config/parameters.yml.dist app/config/parameters.yml
-  - php bin/vendors install
   - php app/console doctrine:mongodb:schema:create --env=test
   - php app/console doctrine:mongodb:fixtures:load --env=test
