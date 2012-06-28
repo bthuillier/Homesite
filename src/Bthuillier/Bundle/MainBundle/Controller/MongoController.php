@@ -22,7 +22,7 @@ class MongoController extends BaseController{
 
     /**
      * 
-     * @return Symfony\Bundle\DoctrineMongoDBBundle\ManagerRegistry
+     * @return Doctrine\Bundle\MongoDBBundle\ManagerRegistry
      */
     protected function getDoctrine() {
         return $this->container->get('doctrine.odm.mongodb');

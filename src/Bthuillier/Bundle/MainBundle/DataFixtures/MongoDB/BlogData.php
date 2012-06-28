@@ -12,6 +12,7 @@ namespace Bthuillier\Bundle\MainBundle\DataFixtures\MongoDB;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Bthuillier\Bundle\MainBundle\Document\Blog;
+use Doctrine\Common\Persistence\ObjectManager;
 
 /*
  * To change this template, choose Tools | Templates
@@ -25,7 +26,7 @@ use Bthuillier\Bundle\MainBundle\Document\Blog;
  */
 class BlogData extends AbstractFixture implements OrderedFixtureInterface{
     
-    public function load($manager)
+    public function load(ObjectManager $manager)
     {
         $blog = new Blog();
         $blog->setBody('azertyuiop');

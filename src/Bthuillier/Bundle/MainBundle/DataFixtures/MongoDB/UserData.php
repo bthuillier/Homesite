@@ -13,6 +13,7 @@ use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Doctrine\Common\Persistence\ObjectManager;
 use Bthuillier\Bundle\MainBundle\Document\User;
 /**
  * Description of UserData
@@ -26,7 +27,7 @@ class UserData extends AbstractFixture implements OrderedFixtureInterface, Conta
      */
     protected $container;
 
-    public function load($manager)
+    public function load(ObjectManager $manager)
     {
         $userManager = $this->container->get('fos_user.user_manager');
         $user = new User();

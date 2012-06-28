@@ -25,14 +25,13 @@ class Blog {
     
     /**
      * @MongoDB\String
-     * @gedmo\Sluggable
      * @Assert\MinLength(limit=3)
      * @Assert\NotBlank
      */
     protected $title;
 
     /**
-     * @gedmo\Slug
+     * @Gedmo\Slug(fields={"title"}, updatable=false, separator="-")
      * @MongoDB\String
      */
     protected $slug;
@@ -50,13 +49,13 @@ class Blog {
     protected $description;
     
     /**
-     * @gedmo\Timestampable(on="create")
+     * @Gedmo\Timestampable(on="create")
      * @MongoDB\Date
      */
     protected $publishedAt;
     
     /**
-     * @gedmo\Timestampable(on="update")
+     * @Gedmo\Timestampable(on="update")
      * @MongoDB\Date
      * 
      */

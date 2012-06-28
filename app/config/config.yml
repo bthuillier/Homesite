@@ -63,8 +63,8 @@ swiftmailer:
     password:  %gmail_password%
 
 jms_security_extra:
-    secure_controllers:  true
     secure_all_services: false
+    expressions: true
 
 fos_user:
     db_driver: mongodb # other valid values are 'mongodb', 'couchdb'

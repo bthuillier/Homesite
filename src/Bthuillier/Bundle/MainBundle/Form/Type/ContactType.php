@@ -11,8 +11,8 @@
 namespace Bthuillier\Bundle\MainBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\FormBuilder;
-
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
  * Description of ContactType
@@ -20,19 +20,19 @@ use Symfony\Component\Form\FormBuilder;
  * @author bthuillier
  */
 class ContactType extends AbstractType {
-    public function buildForm(FormBuilder $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('name','text',array('label'=> 'Votre Nom'));
         $builder->add('mail','email',array('label'=> 'Votre Adresse Email'));
         $builder->add('subject','text',array('label'=> 'Le Sujet De Votre Mail'));
         $builder->add('body','textarea',array('label'=> 'Votre message'));
     }
-    
-    public function getDefaultOptions(array $options)
+
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        return array(
-            'data_class' => 'Bthuillier\Bundle\MainBundle\Contact\Contact'
-        );
+        $resolver->setDefaults(array(
+            'data_class' => 'Bthuillier\Bundle\MainBundle\Contact\Contact',
+        ));
     }
 
     public function getName()

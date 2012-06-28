@@ -77,10 +77,10 @@ class BlogControllerTest extends WebTestCase {
         $crawler = $client->request('GET', \sprintf('/blog/%s/edit', $blog->getSlug()));
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
         $form = $crawler->filter('form input[type=submit]')->form(array(
-            'bthuillier_main_blog_form[isActive]' => $blog->getIsActive(),
-            'bthuillier_main_blog_form[body]' => $blog->getBody(),
-            'bthuillier_main_blog_form[title]' => $blog->getTitle(),
-            'bthuillier_main_blog_form[description]' => $blog->getTitle(),
+            'bthuillier_main_blog[isActive]' => $blog->getIsActive(),
+            'bthuillier_main_blog[body]' => $blog->getBody(),
+            'bthuillier_main_blog[title]' => $blog->getTitle(),
+            'bthuillier_main_blog[description]' => $blog->getTitle(),
         ));
         
         $client->submit($form);
@@ -108,10 +108,10 @@ class BlogControllerTest extends WebTestCase {
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
         
         $form = $crawler->filter('form input[type=submit]')->form(array(
-            'bthuillier_main_blog_form[isActive]' => true,
-            'bthuillier_main_blog_form[body]' => 'fsvfggfgdsfqfdsqfqdsfqsdfqsdg',
-            'bthuillier_main_blog_form[description]' => 'a blog post',
-            'bthuillier_main_blog_form[title]' => 'sqfdsfsf'
+            'bthuillier_main_blog[isActive]' => true,
+            'bthuillier_main_blog[body]' => 'fsvfggfgdsfqfdsqfqdsfqsdfqsdg',
+            'bthuillier_main_blog[description]' => 'a blog post',
+            'bthuillier_main_blog[title]' => 'sqfdsfsf'
         ));
         
         $client->submit($form);
@@ -145,7 +145,7 @@ class BlogControllerTest extends WebTestCase {
         $crawler = $client->request('GET', '/blog/zerfzfd/delete');
         $this->assertEquals(404, $client->getResponse()->getStatusCode());
         
-        $crawler = $client->request('GET', '/blog/sqfdsfsf/delete');
+        $crawler = $client->request('GET', '/blog/sqfdsfsf-1/delete');
         $this->assertEquals(302,$client->getResponse()->getStatusCode());
         $this->assertTrue($client->getResponse()->isRedirect('/blog/list'));
         

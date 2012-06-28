@@ -21,7 +21,7 @@
         
         <service id="bthuillier_main.blog.form" factory-method="createNamed" factory-service="form.factory" class="Symfony\Component\Form\Form">
             <argument>bthuillier_main_blog</argument>
-            <argument>bthuillier_main_blog_form</argument>
+            <argument>bthuillier_main_blog</argument>
         </service>
         
         <service id="bthuillier_main.blog.form.type" class="Bthuillier\Bundle\MainBundle\Form\Type\BlogType">
